@@ -13,7 +13,16 @@
           "package_name": "com.edu.kiet.moneysavingapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "554461307687-v8bggepspq1q8stvhb1oh6s1mdckjh84.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.edu.kiet.moneysavingapp",
+            "certificate_hash": "1a691eaa6c50dfc0bc27267be240d059b8f11838"
+          }
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBwnnZs4X3-vSH7idxLwZVXfekB4XsbFtU"

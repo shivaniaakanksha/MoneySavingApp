@@ -20,120 +20,116 @@
         android:textColor="#000000"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/fntxt"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textLayoutFullName"
         android:layout_below="@id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/open_sans"
-        android:text="Full Name"
-        android:textSize="20sp"
-         />
-
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.TextInputLayout"
+        android:padding="8dp"
+        >
     <EditText
         android:id="@+id/fnedt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fntxt"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="5dp"
         android:fontFamily="@font/open_sans"
         android:hint="Full Name"
         android:inputType="text"
-        android:background="#ffffff"
         android:padding="5dp"
          />
-    <TextView
-        android:id="@+id/emailtxt"
-        android:layout_below="@id/fnedt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/open_sans"
-        android:text="E-mail address"
-        android:textSize="20sp"
-        />
+    </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textLayoutEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textLayoutFullName"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.TextInputLayout"
+        android:padding="8dp"
+        >
     <EditText
         android:id="@+id/emailedt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/emailtxt"
+        android:layout_below="@id/fnedt"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/open_sans"
         android:hint="E-mail address"
         android:inputType="textEmailAddress"
-        android:background="#ffffff"
         android:padding="5dp"
         />
+    </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:id="@+id/passtxt"
-        android:layout_below="@id/emailedt"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+       android:id="@+id/textLayoutPass"
+        android:layout_below="@id/textLayoutEmail"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/open_sans"
-        android:text="Enter Password"
-        android:textSize="20sp"
-         />
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.TextInputLayout"
+        android:padding="8dp"
+        >
 
     <EditText
         android:id="@+id/passedt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/passtxt"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="5dp"
         android:fontFamily="@font/open_sans"
         android:hint="Enter Password"
         android:inputType="textPassword"
-        android:background="#ffffff"
         android:padding="5dp"
         />
+    </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:id="@+id/repasstxt"
-        android:layout_below="@id/passedt"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/textLayoutRePass"
+        android:layout_below="@id/textLayoutPass"
+
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/open_sans"
-        android:text="Re-Enter Password"
-        android:textSize="20sp"
-         />
-
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.TextInputLayout"
+        android:padding="8dp"
+        >
     <EditText
         android:id="@+id/repassedt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/repasstxt"
+
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/open_sans"
         android:hint="Re-Enter Password"
         android:inputType="textPassword"
-        android:background="#ffffff"
         android:padding="5dp"
         />
+    </android.support.design.widget.TextInputLayout>
 
+
+    <RelativeLayout
+    android:id="@+id/btnContainer"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@id/textLayoutRePass"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <Button
         android:id="@+id/submitbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/repassedt"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:background="#0F78DA"
         android:fontFamily="@font/open_sans_bold"
@@ -143,18 +139,18 @@
 
     <Button
         android:id="@+id/cancelbtn"
-        android:onClick="cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/repassedt"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/submitbtn"
         android:background="#FFFFFF"
-        android:text="Cancel"
-        android:textStyle="bold"
         android:fontFamily="@font/open_sans_bold"
-        />
+        android:onClick="cancel"
+        android:text="Cancel"
+        android:textStyle="bold" />
+</RelativeLayout>
+
 
 
 </RelativeLayout>

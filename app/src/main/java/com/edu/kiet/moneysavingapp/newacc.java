@@ -3,6 +3,7 @@ package com.edu.kiet.moneysavingapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +22,7 @@ public class newacc extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newacc);
 
-        fnedt=(EditText)findViewById(R.id.fnedt);
+        fnedt=findViewById(R.id.fnedt);
         emailedt=(EditText)findViewById(R.id.emailedt);
         passedt=(EditText)findViewById(R.id.passedt);
         repassedt=(EditText)findViewById(R.id.repassedt);
