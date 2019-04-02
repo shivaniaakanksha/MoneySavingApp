@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MoneySavingApp</string>
+    <string name="title_activity_newaccount">newaccount</string>
+</resources>

@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "554461307687",
+    "firebase_url": "https://moneysavingapp-39c3e.firebaseio.com",
+    "project_id": "moneysavingapp-39c3e",
+    "storage_bucket": "moneysavingapp-39c3e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554461307687:android:2796d2a615f3c25c",
+        "android_client_info": {
+          "package_name": "com.edu.kiet.moneysavingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwnnZs4X3-vSH7idxLwZVXfekB4XsbFtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "554461307687-geqb6qm4pavf66ue3dhrn3pt2dqv3r0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
