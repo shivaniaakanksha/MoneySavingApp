@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
     private EditText emailip;
     private EditText passip;
     private Button loginbtn;
-    private static int RC_SIGN_IN = 100;
+    //private static int RC_SIGN_IN = 100;
     private FirebaseAuth mAuth;
-    private FirebaseAuth gAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+  //  private GoogleApiClient mGoogleApiClient;
+//    Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,15 +64,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("554461307687-v8bggepspq1q8stvhb1oh6s1mdckjh84.apps.googleusercontent.com")
-            .requestEmail()
-            .build();
-
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
+//    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken("554461307687-v8bggepspq1q8stvhb1oh6s1mdckjh84.apps.googleusercontent.com")
+//            .requestEmail()
+//            .build();
+//
+//    private void signIn() {
+//        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+//        startActivityForResult(signInIntent, RC_SIGN_IN);
+//    }
 
     @Override
     protected void onStart() {
