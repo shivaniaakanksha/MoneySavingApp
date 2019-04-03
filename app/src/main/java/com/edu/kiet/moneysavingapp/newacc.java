@@ -15,8 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.*;
 
 public class newacc extends Activity {
 
@@ -24,7 +23,6 @@ public class newacc extends Activity {
     private EditText emailedt;
     private EditText passedt;
     private EditText repassedt;
-    private ProgressDialog progressDialog;
     FirebaseAuth fireBaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +30,18 @@ public class newacc extends Activity {
         setContentView(R.layout.activity_newacc);
 
         fnedt=findViewById(R.id.fnedt);
-        emailedt=(EditText)findViewById(R.id.emailedt);
-        passedt=(EditText)findViewById(R.id.passedt);
-        repassedt=(EditText)findViewById(R.id.repassedt);
-        progressDialog=new ProgressDialog(this);
+        emailedt=findViewById(R.id.emailedt);
+        passedt=findViewById(R.id.passedt);
+        repassedt=findViewById(R.id.repassedt);
+        Button submitbtn = findViewById(R.id.submitbtn);
+        fireBaseAuth = FirebaseAuth.getInstance();
+
+        submitbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registeruser();
+            }
+        });
     }
 
     private void registeruser() {
@@ -47,12 +53,13 @@ public class newacc extends Activity {
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(fullname) || TextUtils.isEmpty(repassword)) {
             Toast.makeText(newacc.this, "Fields cannot be Empty", Toast.LENGTH_LONG).show();
+            return;
         }
 
-        progressDialog.setMessage("Registering User...");
-        progressDialog.show();
 
-            fireBaseAuth.createUserWithEmailAndPassword(email, repassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+            fireBaseAuth.createUserWithEmailAndPassword(email, repassword)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
@@ -65,8 +72,5 @@ public class newacc extends Activity {
             }
 
 
-    public void submit (View view){
-            registeruser();
-        }
 
 }

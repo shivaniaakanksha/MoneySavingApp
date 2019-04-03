@@ -17,8 +17,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="TextAppearance.AppCompat.TextInputLayout"
-        parent="@android:style/TextAppearance">
+    <style name="TextAppearance.AppCompat.TextInputLayout" parent="@android:style/TextAppearance">
         <item name="android:textColor">@android:color/holo_blue_dark</item>
         <item name="android:textColorHint">@android:color/holo_blue_dark</item>
 

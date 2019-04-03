@@ -9,14 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.edu.kiet.moneysavingapp.dashboard">
-
-        </activity>
-        <activity android:name="com.edu.kiet.moneysavingapp.newacc"
-            android:parentActivityName="com.edu.kiet.moneysavingapp.MainActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.edu.kiet.moneysavingapp.MainActivity" />
+        <activity android:name=".dashboard" />
+        <activity
+            android:name=".newacc"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edu.kiet.moneysavingapp.MainActivity" />
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
