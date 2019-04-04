@@ -3,10 +3,13 @@ package com.edu.kiet.moneysavingapp;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 //import android.support.design.widget.Snackbar;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,12 +34,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.regex.Pattern;
+
 //import static com.edu.kiet.moneysavingapp.R.id.snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN =1001 ;
     private static final String TAG ="xyz" ;
+
 
     private EditText emailip;
     private EditText passip;
@@ -44,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     GoogleSignInClient mGoogleSignInClient;
     private com.google.android.gms.common.SignInButton googlebtn;
+    private TextInputLayout emailsignin;
+    private TextInputLayout passsignin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         emailip=(EditText)findViewById(R.id.emailip);
         passip=(EditText)findViewById(R.id.passip);
         loginbtn=(Button)findViewById(R.id.loginbtn);
+
+        emailsignin = findViewById(R.id.emailsignin);
+        passsignin = findViewById(R.id.passsignin);
+
         mAuthListener=new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -71,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 startSignIn();
             }
         });
-
-
 
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -101,8 +112,9 @@ public class MainActivity extends AppCompatActivity {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
+                Toast.makeText(MainActivity.this,"User Signed In",Toast.LENGTH_SHORT).show();
             } catch (ApiException e) {
-                Toast.makeText(MainActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"error",Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -151,22 +163,27 @@ public class MainActivity extends AppCompatActivity {
         String email=emailip.getText().toString();
         String password=passip.getText().toString();
 
-        if(TextUtils.isEmpty(email)||TextUtils.isEmpty(password)){
-            Toast.makeText(MainActivity.this,"Fields cannot be Empty",Toast.LENGTH_LONG).show();
+        if(!validateEmail() | !validatePassword() );
 
-        }else{
+//        if(TextUtils.isEmpty(email)||TextUtils.isEmpty(password)){
+//            //Toast.makeText(MainActivity.this,"Fields cannot be Empty",Toast.LENGTH_LONG).show();
+//
+//        }else{
             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(!task.isSuccessful()){
+                        //Snackbar.make(findViewById(R.id.snackbar), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
                         Toast.makeText(MainActivity.this,"SignIn failed",Toast.LENGTH_LONG).show();
 
+                    }else {
+                        Toast.makeText(MainActivity.this,"SignIn Successfully",Toast.LENGTH_LONG).show();
                     }
                 }
             });
         }
 
-    }
+//    }
 
 
     public void newaccount(View view) {
@@ -175,5 +192,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private boolean validateEmail() {
+        String emailInput = emailsignin.getEditText().getText().toString().trim();
+        if (emailInput.isEmpty()) {
+            emailsignin.setError("Field can't be Empty");
+            return false;
+
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            emailsignin.setError("Please enter a valid email address");
+            return false;
+        } else {
+            emailsignin.setError(null);
+            return true;
+        }
+
+    }
+
+    private boolean validatePassword() {
+        String passInput = passsignin.getEditText().getText().toString().trim();
+        if (passInput.isEmpty()) {
+            passsignin.setError("Field can't be Empty");
+            return false;
+
+        }
+        else {
+            passsignin.setError(null);
+            return true;
+        }
+
+    }
 
 }

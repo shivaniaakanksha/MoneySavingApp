@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/signinbackground"
+    android:background="@drawable/bg1"
 
     android:orientation="vertical"
     >
@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Sign In"
         android:textSize="25sp"
@@ -28,9 +28,11 @@
     app:cardMaxElevation="4dp"
     app:cardCornerRadius="4dp"
     android:layout_below="@id/signin"
-    android:layout_marginTop="40dp"
-    android:layout_marginRight="40dp"
-    android:layout_marginLeft="40dp">
+    android:layout_marginTop="20dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginLeft="30dp"
+    android:paddingTop="40dp"
+    android:paddingBottom="40dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,21 +45,20 @@
     android:layout_below="@id/signin"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
-    android:padding="8dp"
+    android:layout_marginBottom="10dp"
+    android:paddingTop="20dp" app:errorEnabled="true"
     >
 
     <EditText
         android:id="@+id/emailip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="40dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="10dp"
         android:fontFamily="@font/montserrat"
         android:hint="E-mail address"
-        android:inputType="textEmailAddress"
-        android:padding="5dp" />
+        android:inputType="textEmailAddress" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -66,30 +67,25 @@
         android:layout_below="@+id/emailsignin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:padding="8dp"
+        android:paddingBottom="10dp"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true"
         >
     <EditText
         android:id="@+id/passip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:hint="Password"
-        android:padding="5dp"
         android:inputType="textPassword"
         android:fontFamily="@font/montserrat"
+        android:singleLine="true"
+
         />
     </android.support.design.widget.TextInputLayout>
 
-<!--<android.support.design.widget.Snackbar.SnackbarLayout-->
-    <!--android:id="@+id/snackbar"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content">-->
 
-
-<!--</android.support.design.widget.Snackbar.SnackbarLayout>-->
 
     </LinearLayout>
 
@@ -116,7 +112,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="or"
         android:layout_gravity="center"
@@ -129,14 +125,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="40dp"
         android:fontFamily="@font/montserrat"
         android:text="Sign in with Google"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
         android:textStyle="bold"
-
         />
     <TextView
         android:layout_below="@id/googlebtn"
@@ -145,10 +140,10 @@
         android:onClick="newaccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="40dp"
         android:fontFamily="@font/montserrat"
-        android:text="create a new account?"
+        android:text="New user? SignUp here!"
         android:layout_gravity="right"
         android:textSize="15sp"
         android:textStyle="bold" />
