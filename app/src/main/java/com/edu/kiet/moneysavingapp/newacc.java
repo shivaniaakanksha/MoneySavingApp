@@ -72,11 +72,11 @@ public class newacc extends Activity {
     private boolean validateEmail() {
         String emailInput = textLayoutEmail.getEditText().getText().toString().trim();
         if (emailInput.isEmpty()) {
-            textLayoutEmail.setError("Field can't be Empty");
+            textLayoutEmail.setError("  Field can't be Empty");
             return false;
 
         } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
-            textLayoutEmail.setError("Please enter a valid email address");
+            textLayoutEmail.setError("   Please enter a valid email address");
             return false;
         } else {
             textLayoutEmail.setError(null);
@@ -88,7 +88,7 @@ public class newacc extends Activity {
     private boolean validatePassword() {
         String passInput = textLayoutPass.getEditText().getText().toString().trim();
         if (passInput.isEmpty()) {
-            textLayoutPass.setError("Field can't be Empty");
+            textLayoutPass.setError("   Field can't be Empty");
             return false;
         } else {
             textLayoutPass.setError(null);
@@ -100,11 +100,11 @@ public class newacc extends Activity {
     private boolean validateUsername() {
         String UsernameInput = textLayoutUserName.getEditText().getText().toString().trim();
         if (UsernameInput.isEmpty()) {
-            textLayoutUserName.setError("Field can't be Empty");
+            textLayoutUserName.setError("   Field can't be Empty");
             return false;
 
         } else if (UsernameInput.length()>15) {
-            textLayoutUserName.setError("Username too long");
+            textLayoutUserName.setError("   Username too long");
             return false;
         } else {
             textLayoutUserName.setError(null);
@@ -120,14 +120,9 @@ public class newacc extends Activity {
         String username = UserName.getText().toString().trim();
         //String repassword = repassedt.getText().toString().trim();
 
-        if(!validateUsername() | !validateEmail() | !validatePassword()  );
-
-//        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(fullname) || TextUtils.isEmpty(repassword)) {
-//            Toast.makeText(newacc.this, "Fields cannot be Empty", Toast.LENGTH_LONG).show();
-//            return;
-//        }
-
-
+        if(!validateUsername() | !validateEmail() | !validatePassword()){
+            return;
+        } else {
             fireBaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -139,6 +134,14 @@ public class newacc extends Activity {
                             }
                         }
                     });
+        }
+
+//        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(fullname) || TextUtils.isEmpty(repassword)) {
+//            Toast.makeText(newacc.this, "Fields cannot be Empty", Toast.LENGTH_LONG).show();
+//            return;
+//        }
+
+
 
 
     }

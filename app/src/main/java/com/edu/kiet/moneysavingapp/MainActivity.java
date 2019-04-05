@@ -163,12 +163,10 @@ public class MainActivity extends AppCompatActivity {
         String email=emailip.getText().toString();
         String password=passip.getText().toString();
 
-        if(!validateEmail() | !validatePassword() );
-
-//        if(TextUtils.isEmpty(email)||TextUtils.isEmpty(password)){
-//            //Toast.makeText(MainActivity.this,"Fields cannot be Empty",Toast.LENGTH_LONG).show();
-//
-//        }else{
+        if(!validateEmail() | !validatePassword() ){
+            return;
+        }
+            else {
             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -183,6 +181,13 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+//        if(TextUtils.isEmpty(email)||TextUtils.isEmpty(password)){
+//            //Toast.makeText(MainActivity.this,"Fields cannot be Empty",Toast.LENGTH_LONG).show();
+//
+//        }else{
+
+    }
+
 //    }
 
 
@@ -195,11 +200,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean validateEmail() {
         String emailInput = emailsignin.getEditText().getText().toString().trim();
         if (emailInput.isEmpty()) {
-            emailsignin.setError("Field can't be Empty");
+            emailsignin.setError("   Field can't be Empty");
             return false;
 
         } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
-            emailsignin.setError("Please enter a valid email address");
+            emailsignin.setError("   Please enter a valid email address");
             return false;
         } else {
             emailsignin.setError(null);
@@ -211,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean validatePassword() {
         String passInput = passsignin.getEditText().getText().toString().trim();
         if (passInput.isEmpty()) {
-            passsignin.setError("Field can't be Empty");
+            passsignin.setError("   Field can't be Empty");
             return false;
 
         }
