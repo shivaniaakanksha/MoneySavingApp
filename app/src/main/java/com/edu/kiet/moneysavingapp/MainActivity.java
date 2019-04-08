@@ -28,6 +28,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,15 +58,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+        //FirebaseApp.initializeApp(this);
 
         mAuth=FirebaseAuth.getInstance();
+
+
         emailip=(EditText)findViewById(R.id.emailip);
         passip=(EditText)findViewById(R.id.passip);
         loginbtn=(Button)findViewById(R.id.loginbtn);
 
         emailsignin = findViewById(R.id.emailsignin);
         passsignin = findViewById(R.id.passsignin);
+
+
 
         mAuthListener=new FirebaseAuth.AuthStateListener() {
             @Override
@@ -151,12 +158,13 @@ public class MainActivity extends AppCompatActivity {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-    
+
+
 
     @Override
     protected void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
+  mAuth.addAuthStateListener(mAuthListener);
     }
 
     private void startSignIn(){
@@ -176,6 +184,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }else {
                         Toast.makeText(MainActivity.this,"SignIn Successfully",Toast.LENGTH_LONG).show();
+                       Intent intent = new Intent(MainActivity.this, uploadImage.class);
+                        startActivity(intent);
                     }
                 }
             });
